@@ -26,7 +26,7 @@
 				<input type="text" class="form-control" name="full_name" placeholder="Nhập họ và tên..." required>
 			</div>
 
-			<button type="submit" class="btn btn-default" name="register">'Đăng ki'</button>
+			<button type="submit" class="btn btn-default" name="register">Đăng kí</button>
 	    </div>
 	</div>
 </div>

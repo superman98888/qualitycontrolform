@@ -16,7 +16,7 @@
 				<input type="password" class="form-control" name="passlg" placeholder="Nhập mật khẩu..." required>
 			</div>
 
-			<button type="submit" class="btn btn-default" name="dangnhap">'Đăng nhập'</button>
+			<button type="submit" class="btn btn-default" name="dangnhap">Đăng nhập</button>
 	    </div>
 	</div>
 </div>

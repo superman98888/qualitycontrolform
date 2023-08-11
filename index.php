@@ -7,10 +7,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BVND2 manager</title>
+  <title>Quản Lí Sự Cố</title>
 </head>
 <body>
-<?php
+<?php	
+		 $_SESSION["loged"] = null;
 		if(isset($_POST["register"])){
 			$user_name = $_POST["user_name"];
 			$pass1 = $_POST["pass1"];
@@ -41,7 +42,7 @@
 			");
 			$count = mysqli_num_rows($rows);
 			if($count==1){
-				$_SESSION["loged"] = true;
+				 $_SESSION["loged"] = true;
 				header("location:index.php");
 				setcookie("success", "Đăng nhập thành công!", time()+1, "/","", 0);
 			}
@@ -59,8 +60,8 @@
 
 	<div class="container">
 		<div class="row">
-			<a href="index.php?page=register" class="btn btn-success">'Đăng ký'</a>
-			<a href="index.php" class="btn btn-info">'Trang chủ'</a>
+			<a href="index.php?page=register" class="btn btn-success">Đăng kí</a>
+			<a href="index.php" class="btn btn-info">Trang chủ</a>
 			<?php if(isset($_SESSION["loged"])) echo "<a href='index.php?act=logout' class='btn btn-danger'>Đăng xuất</a>"; ?>
 		</div>
 
@@ -69,7 +70,7 @@
 				if(isset($_COOKIE["error"])){
 			?>
 			<div class="alert alert-danger">
-			  	<strong>'Có lỗi!'</strong> <?php echo $_COOKIE["error"]; ?>
+			  	<strong>Có lỗi!</strong> <?php echo $_COOKIE["error"]; ?>
 			</div>
 			<?php } ?>
 
@@ -78,7 +79,7 @@
 				if(isset($_COOKIE["success"])){
 			?>
 			<div class="alert alert-success">
-			  	<strong>'Chúc mừng!'</strong> <?php echo $_COOKIE["success"]; ?>
+			  	<strong>Chúc mừng!</strong> <?php echo $_COOKIE["success"]; ?>
 			</div>
 			<?php } ?>
 
@@ -90,13 +91,15 @@
 			if(isset($_GET["page"])&&$_GET["page"]=="register")
 				include "register.php";
 
-
-			if(!isset($_GET["page"])){
-				if(isset($_SESSION["loged"])==true)
-					include "admin.php";
-				else
+			// elseif(!$_SESSION["loged"]!= null)
+			// 	include "admin.php";
+			// if(!isset($_GET["page"]))
+			// {
+			// 	if(!isset($_SESSION["loged"]))
+			// 		include "admin.php";
+			else
 					include "login.php";
-			}?>
+			?>
 		</div>
 
 	</div>
