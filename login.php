@@ -1,13 +1,13 @@
 <form action="" method="post">
 <div class="col-md-6 col-md-offset-3">
 	<div class="alert alert-info">
-	  <strong>'Trang đăng nhập'</strong>
+	  <strong>Trang Đăng Nhập</strong>
 	</div>
 
 	<div class="panel panel-primary">
 	    <div class="panel-body">
 	    	<div class="form-group">
-				<label for="email">Tài khoản:</label>
+				<label for="user">Tài khoản:</label>
 				<input type="text" class="form-control" name="user_name_lg" placeholder="Nhập tên đăng nhập...">
 			</div>
 
@@ -21,7 +21,3 @@
 	</div>
 </div>
 </form>
-<?php
-	$connect = mysqli_connect('localhost','root','','Demo1');
-	mysqli_set_charset($connect,"utf8");
-?>

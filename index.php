@@ -1,5 +1,5 @@
 <?php
-	$connect = mysqli_connect('localhost','root','','Demo1');
+	$connect = mysqli_connect('localhost','root','','demo1');
 	mysqli_set_charset($connect, "utf8");
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 				$pass = md5($pass1);
 				mysqli_query($connect,"
 					insert into user (user_name,password,full_name)
-					values ('$user_name','$pass','$name')
+					 values ('$user_name','$pass','$name')
 				");
 				header("location:index.php?page=register");
 				setcookie("success", "Đăng ký thành công!", time()+1, "/","", 0);
@@ -92,12 +92,11 @@
 
 
 			if(!isset($_GET["page"])){
-				if(isset($_SESSION["loged"]))
+				if(isset($_SESSION["loged"])==true)
 					include "admin.php";
 				else
 					include "login.php";
-			}
-			?>
+			}?>
 		</div>
 
 	</div>
