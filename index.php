@@ -45,6 +45,7 @@
 				 $_SESSION["loged"] = true;
 				header("location:index.php");
 				setcookie("success", "Đăng nhập thành công!", time()+1, "/","", 0);
+				header("Location: admin.php/");
 			}
 			else{
 				header("location:index.php");
