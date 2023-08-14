@@ -12,7 +12,7 @@
           <h3 class="card-title">Login</h3>
         </div>
         <div class="card-body">
-          <a href="login.php"> <input type="image" img src="loginava.gif" alt="login image" width="53%" height="53%"></a>
+          <a href="login.php"> <input type="image" img src="Image/loginava.gif" alt="login image" width="53%" height="53%"></a>
           <p class="card-text text-muted">Never share your password with anyone.</p>
           <a href="login.php" class="btn btn-primary"> Sign In</a>                                    
         </div>
@@ -25,7 +25,7 @@
           <h3 class="card-title">Register</h3>
         </div>
         <div class="card-body">
-          <a href="login.php"><img src="registerava.png" alt="register image" width="54%" height="54%"></a>
+          <a href="login.php"><img src="Image/registerava.png" alt="register image" width="54%" height="54%"></a>
           <p class="card-text text-muted">Always use different password for different site.</p>
           <a href="register.php" class="btn btn-primary"> Sign Up </a>
         </div>
