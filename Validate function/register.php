@@ -21,7 +21,7 @@
     </div>
   </form>
 </div>
-<?php include "header.php" ?>
+<?php include "/header.php" ?>
 <?php
 if (isset($_POST['signup'])) {
   $name = $_POST['name'];
