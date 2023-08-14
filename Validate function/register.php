@@ -1,23 +1,23 @@
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
-  <h1 class="text-center">Sign Up</h1>
+  <h1 class="text-center">Đăng Kí</h1>
   <hr>
   <form action="" method="post">
     <div class="mb-3">
-      <label for="name" class="form-label">Username</label>
-      <input type="text" class="form-control" name="name" placeholder="Enter your name" autocomplete="off" required>
+      <label for="name" class="form-label">Tên</label>
+      <input type="text" class="form-control" name="name" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Email ID</label>
-      <input type="email" class="form-control" name="email" placeholder="Enter your email" autocomplete="off" required>
-      <small class="text-muted">Your email is safe with us.</small>
+      <label for="email" class="form-label">Email </label>
+      <input type="email" class="form-control" name="email" placeholder="Nhập Email của bạn ở dây" autocomplete="off" required>
+      <small class="text-muted">Email của bạn an toàn với chúng tôi</small>
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
-      <small class="text-muted">Do not share your password.</small>
+      <label for="password" class="form-label">Mật khẩu </label>
+      <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu của bạn ở đây" required>
+      <small class="text-muted">Vui lòng không chia sẻ mật khẩu</small>
     </div>
     <div class="mb-3">
-      <input type="submit" name="signup" value="Sign Up" class="btn btn-primary">
+      <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary">
     </div>
   </form>
 </div>

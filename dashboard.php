@@ -13,7 +13,10 @@ if (isset($_POST['signout'])) {
 }
 ?>
 <div class="container col-12 border rounded mt-3">
-  <h1 class=" mt-3 text-center">Welcome, This your dashboard!! </h1>
+  <h1 class=" mt-3 text-center">Xin chào,
+                <strong>
+                    <?php echo $_SESSION['name']; ?>
+                </strong> </h1>
   <hr>
   <h4> <?php echo $_SESSION['name']; ?> </h4>
 
@@ -35,6 +38,6 @@ if (isset($_POST['signout'])) {
   </table>
 
   <form action="" method="post">
-    <button type="submit" name='signout' class=" btn btn-warning mb-3"> Sign Out</button>
+    <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
   </form>
 </div>

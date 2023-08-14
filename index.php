@@ -26,7 +26,7 @@
         </div>
         <div class="card-body">
           <a href="Validate function/register.php"><img src="Image/registerava.png" alt="register image" width="54%" height="54%"></a>
-          <p class="card-text text-muted">Luôn thay đổi mật khẩu cho mọi thứ</p>
+          <p class="card-text text-muted">Luôn tạo mới mật khẩu cho mọi thứ</p>
           <a href="Validate function/register.php" class="btn btn-primary"> Đăng kí </a>
         </div>
       </div>
