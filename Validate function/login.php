@@ -38,13 +38,19 @@ if (isset($_POST['signin'])) {
     $user_name = $row['username'];
     $user_email = $row['email'];
     $user_password = $row['password'];
+    $user_contact = $row['contact'];
+    $user_department = $row['department'];
+    $user_field = $row['field'];
   }
   if ($user_email == $email  &&  $user_password == $password) {
 
-    $_SESSION['id'] = $user_id;       // Storing the value in session
-    $_SESSION['name'] = $user_name;   // Storing the value in session
-    $_SESSION['email'] = $user_email; // Storing the value in session
-    //! Session data can be hijacked. Never store personal data such as password, security pin, credit card numbers other important data in $_SESSION
+    $_SESSION['id'] = $user_id;       
+    $_SESSION['name'] = $user_name;   
+    $_SESSION['email'] = $user_email; 
+    $_SESSION['contact'] = $user_contact;
+    $_SESSION['department'] = $user_department;
+    $_SESSION['field'] = $user_field;
+    
     header('location: ../dashboard.php?user_id=' . $user_id);
   } else {
     header('location: login.php'); 
