@@ -18,7 +18,7 @@
   </form>
 </div>
 <?php session_start(); ?>
-<?php include "/header.php" ?>
+<?php include "../header.php" ?>
 <?php
 
 if (isset($_POST['signin'])) {
