@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {         // condition Check: if session is not set
 ?>
 <?php
 if (isset($_POST['signout'])) {
-  session_destroy();            //  destroys session 
+  session_destroy();
   header('location: index.php');
 }
 ?>
@@ -20,22 +20,6 @@ if (isset($_POST['signout'])) {
   <hr>
   <h4> <?php echo $_SESSION['name']; ?> </h4>
 
-  <table class="table table-striped table-bordered table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Username</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td> <?php echo $_SESSION['id']; ?></td>
-        <td> <?php echo $_SESSION['name']; ?></td>
-        <td> <?php echo $_SESSION['email']; ?></td>
-      </tr>
-    </tbody>
-  </table>
 
   <form action="" method="post">
     <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
