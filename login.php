@@ -47,7 +47,7 @@ if (isset($_POST['signin'])) {
     //! Session data can be hijacked. Never store personal data such as password, security pin, credit card numbers other important data in $_SESSION
     header('location: dashboard.php?user_id=' . $user_id);
   } else {
-    header('location: login.php'); //login.php
+    header('location: login.php'); 
   }
 }
 ?>

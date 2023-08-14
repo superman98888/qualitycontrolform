@@ -12,7 +12,7 @@
           <h3 class="card-title">Login</h3>
         </div>
         <div class="card-body">
-          <a href="login.php"> <img src="D:\Demo web\xampp\htdocs\loginform\loginanimation.js" alt="login image" width="53%" height="53%"></a>
+          <a href="login.php"> <input type="image" img src="https://github.com/superman98888/loginform/blob/main/ok1.gif" alt="login image" width="53%" height="53%"></a>
           <p class="card-text text-muted">Never share your password with anyone.</p>
           <a href="login.php" class="btn btn-primary"> Sign In</a>                                    
         </div>
