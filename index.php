@@ -9,12 +9,12 @@
     <div class="col">
       <div class="card text-center">
         <div class="card-header">
-          <h3 class="card-title">Login</h3>
+          <h3 class="card-title">Đăng Nhập</h3>
         </div>
         <div class="card-body">
-          <a href="login.php"> <input type="image" img src="Image/loginava.gif" alt="login image" width="53%" height="53%"></a>
-          <p class="card-text text-muted">Never share your password with anyone.</p>
-          <a href="login.php" class="btn btn-primary"> Sign In</a>                                    
+          <a href="Validate function/login.php"> <input type="image" img src="Image/loginava.gif" alt="login image" width="53%" height="53%"></a>
+          <p class="card-text text-muted">Đừng chia sẻ mật khẩu với bất kì ai</p>
+          <a href="Validate function/login.php" class="btn btn-primary">Đăng nhập</a>                                    
         </div>
       </div>
     </div>
@@ -22,12 +22,12 @@
     <div class="col">
       <div class="card text-center">
         <div class="card-header">
-          <h3 class="card-title">Register</h3>
+          <h3 class="card-title">Đăng Kí</h3>
         </div>
         <div class="card-body">
-          <a href="login.php"><img src="Image/registerava.png" alt="register image" width="54%" height="54%"></a>
-          <p class="card-text text-muted">Always use different password for different site.</p>
-          <a href="register.php" class="btn btn-primary"> Sign Up </a>
+          <a href="Validate function/register.php"><img src="Image/registerava.png" alt="register image" width="54%" height="54%"></a>
+          <p class="card-text text-muted">Luôn thay đổi mật khẩu cho mọi thứ</p>
+          <a href="Validate function/register.php" class="btn btn-primary"> Đăng kí </a>
         </div>
       </div>
     </div>
