@@ -11,9 +11,9 @@ class ACL
         {
             $this->userID = floatval($userID);
         } else {
-            $this->userID = floatval($_SESSION['userID']);
+            $this->userID = floatval($_SESSION['ID']);
         }
-        $this->userRoles = $this->getUserRoles('ids');
+        $this->userRoles = $this->getUserRoles();
         $this->buildACL();
     }
     function ACL($userID='')
@@ -23,27 +23,27 @@ class ACL
     function getUserRoles()
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT * FROM `user_roles` WHERE `userID` = " . floatval($this->userID) . " ORDER BY `addDate` ASC";
+        $query = "SELECT * FROM `user_role` WHERE `ID` = " . floatval($this->userID) . " ORDER BY `addDate` ASC";
         $data = mysqli_query($conn, $query);
         $resp = array();
         while($row = mysqli_fetch_array($data))
         {
-            $resp[] = $row['roleID'];
+            $resp[] = $row['role_ID'];
         }
         return $resp;
     }
-    function getAllRoles($format='ids')
+    function getAllRoles($format='role_ID')
     {
         $conn = mysqli_connect('localhost','root','','demo1');
         $format = strtolower($format);
-        $query = "SELECT * FROM `roles` ORDER BY `roleName` ASC";
+        $query = "SELECT * FROM `roles` ORDER BY `role_name` ASC";
         $data = mysqli_query($conn, $query);
         $resp = array();
         while($row = mysqli_fetch_array($data))
         {
             if ($format == 'full')
             {
-                $resp[] = array("ID" => $row['ID'],"Name" => $row['roleName']);
+                $resp[] = array("ID" => $row['role_ID'],"Name" => $row['role_name']);
             } else {
                 $resp[] = $row['ID'];
             }
@@ -60,34 +60,34 @@ class ACL
         //then, get the individual user permissions 
         $this->perms = array_merge($this->perms,$this->getUserPerms($this->userID));
     }
-    function getPermKeyFromID($permID)
+    function getPermKeyFromID($permission_ID)
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT `permKey` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
+        $query = "SELECT `permKey` FROM `permissions` WHERE `ID` = " . floatval($permission_ID) . " LIMIT 1";
         $data = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($data);
         return $row[0];
     }
-    function getPermNameFromID($permID)
+    function getPermNameFromID($permission_ID)
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT `permName` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
+        $query = "SELECT `permission_desc` FROM `permissions` WHERE `ID` = " . floatval($permission_ID) . " LIMIT 1";
         $data = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($data);
         return $row[0];
     }
-    function getRoleNameFromID($roleID)
+    function getRoleNameFromID($role_ID)
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT `roleName` FROM `roles` WHERE `ID` = " . floatval($roleID) . " LIMIT 1";
+        $query = "SELECT `role_name` FROM `roles` WHERE `ID` = " . floatval($role_ID) . " LIMIT 1";
         $data = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($data);
         return $row[0];
     }
-    function getUsername($userID)
+    function getUsername($ID)
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT `username` FROM `users` WHERE `ID` = " . floatval($userID) . " LIMIT 1";
+        $query = "SELECT `username` FROM `users` WHERE `ID` = " . floatval($ID) . " LIMIT 1";
         $data = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($data);
         return $row[0];
@@ -97,22 +97,22 @@ class ACL
         $conn = mysqli_connect('localhost','root','','demo1');
         if (is_array($role))
         {
-            $query = "SELECT * FROM `role_perms` WHERE `roleID` IN (" . implode(",",$role) . ") ORDER BY `ID` ASC";
+            $query = "SELECT * FROM `role_perm` WHERE `role_ID` IN (" . implode(",",$role) . ") ORDER BY `ID` ASC";
         } else {
-            $query = "SELECT * FROM `role_perms` WHERE `roleID` = " . floatval($role) . " ORDER BY `ID` ASC";
+            $query = "SELECT * FROM `role_perm` WHERE `role_ID` = " . floatval($role) . " ORDER BY `ID` ASC";
         }
         $data = mysqli_query($conn, $query);
         $perms = array();
         while($row = mysqli_fetch_assoc($data))
         {
-            $pK = strtolower($this->getPermKeyFromID($row['permID']));
+            $pK = strtolower($this->getPermKeyFromID($row['permission_ID']));
             if ($pK == '') { continue; }
             if ($row['value'] === '1') {
                 $hP = true;
             } else {
                 $hP = false;
             }
-            $perms[$pK] = array('perm' => $pK,'inheritted' => true,'value' => $hP,'Name' => $this->getPermNameFromID($row['permID']),'ID' => $row['permID']);
+            $perms[$pK] = array('perm' => $pK,'inheritted' => true,'value' => $hP,'Name' => $this->getPermNameFromID($row['permission_ID']),'ID' => $row['permission_ID']);
         }
         return $perms;
     }
@@ -120,34 +120,34 @@ class ACL
     function getUserPerms($userID)
     {
         $conn = mysqli_connect('localhost','root','','demo1');
-        $query = "SELECT * FROM `user_perms` WHERE `userID` = " . floatval($userID) . " ORDER BY `addDate` ASC";
+        $query = "SELECT * FROM `user_perm` WHERE `user_ID` = " . floatval($userID) . " ORDER BY `addDate` ASC";
         $data = mysqli_query($conn, $query);
         $perms = array();
         while($row = mysqli_fetch_assoc($data))
         {
-            $pK = strtolower($this->getPermKeyFromID($row['permID']));
+            $pK = strtolower($this->getPermKeyFromID($row['permission_ID']));
             if ($pK == '') { continue; }
             if ($row['value'] == '1') {
                 $hP = true;
             } else {
                 $hP = false;
             }
-            $perms[$pK] = array('perm' => $pK,'inheritted' => false,'value' => $hP,'Name' => $this->getPermNameFromID($row['permID']),'ID' => $row['permID']);
+            $perms[$pK] = array('perm' => $pK,'inheritted' => false,'value' => $hP,'Name' => $this->getPermNameFromID($row['permission_ID']),'ID' => $row['permission_ID']);
         }
         return $perms;
     }
-    function getAllPerms($format='ids')
+    function getAllPerms($format='ID')
     {
         $conn = mysqli_connect('localhost','root','','demo1');
         $format = strtolower($format);
-        $query = "SELECT * FROM `permissions` ORDER BY `permName` ASC";
+        $query = "SELECT * FROM `permissions` ORDER BY `permission_desc` ASC";
         $data = mysqli_query($conn, $query);
         $resp = array();
         while($row = mysqli_fetch_assoc($data))
         {
             if ($format == 'full')
             {
-                $resp[$row['permKey']] = array('ID' => $row['ID'], 'Name' => $row['permName'], 'Key' => $row['permKey']);
+                $resp[$row['permKey']] = array('ID' => $row['ID'], 'Name' => $row['permission_desc'], 'Key' => $row['permission_desc']);
             } else {
                 $resp[] = $row['ID'];
             }
