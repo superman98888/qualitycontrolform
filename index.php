@@ -9,7 +9,7 @@
     <div class="col">
       <div class="card text-center">
         <div class="card-header">
-          <h3 class="card-title">Đăng Nhập</h3>
+          <h3 class="card-title"> Đăng Nhập </h3>
         </div>
         <div class="card-body">
           <a href="Validate function/login.php"> <input type="image" img src="Image/loginava.gif" alt="login image" width="53%" height="53%"></a>

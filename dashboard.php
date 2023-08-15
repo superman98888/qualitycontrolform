@@ -3,7 +3,7 @@
 
 <?php
 if (!isset($_SESSION['id'])) {         // condition Check: if session is not set. 
-  header('location: login.php');   // if not set the user is sendback to login page. login.php
+  header('location: login.php');   // if not set the user is send back to login page. login.php
 }
 ?>
 <?php
