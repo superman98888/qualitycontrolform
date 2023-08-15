@@ -16,7 +16,7 @@ if ($myACL->hasPermission('access_admin') != true){ header("location: ../index.p
 <div id="adminButton"><a href="../">Main Screen</a></div>
 <div id="page">
     <h2>Select an Admin Function:</h2>
-    <a href="user.php">Manage Users</a><br />
+    <a href="user.php">Manage User</a><br />
     <a href="roles.php">Manage Roles</a><br />
     <a href="perms.php">Manage Permissions</a><br />
 </div>
