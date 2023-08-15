@@ -1,6 +1,6 @@
 <?php 
 include("../database.php"); 
-include("../assets/acl.php");
+include("../assets/ACL.php");
 $myACL = new ACL();
 if ($myACL->hasPermission('access_admin') != true){header("location: ../index.php");}
  ?>
