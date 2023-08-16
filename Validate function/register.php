@@ -7,14 +7,26 @@
       <input type="text" class="form-control" name="name" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Email </label>
+      <label for="email" class="form-label"> Email </label>
       <input type="email" class="form-control" name="email" placeholder="Nhập Email của bạn ở dây" autocomplete="off" required>
-      <small class="text-muted">Email của bạn an toàn với chúng tôi</small>
+      <small class="text-muted">Mỗi tài khoản có 1 email riêng biệt và dộc nhất</small>
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Mật khẩu </label>
       <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu của bạn ở đây" required>
       <small class="text-muted">Vui lòng không chia sẻ mật khẩu</small>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label"> Liên lạc </label>
+      <input type="email" class="form-control" name="email" placeholder="Nhập chi tiết phương thức liên lạc của bạn ở dây" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label"> Khoa </label>
+      <input type="email" class="form-control" name="email" placeholder="Nhập tên Khoa của bạn ở dây" autocomplete="off" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label"> Lĩnh vực </label>
+      <input type="email" class="form-control" name="email" placeholder="Nhập lĩnh vực của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
       <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary">
@@ -27,8 +39,11 @@ if (isset($_POST['signup'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $department = $_POST['department'];
+  $field = $_POST['field'];
+  $contact = $_POST['contact'];
 
-  $query = "INSERT INTO users(username,email,password) VALUES('{$name}','{$email}','{$password}')";
+  $query = "INSERT INTO users(username,email,password,contact, department, field) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}','{$field}')";
   $addUser = mysqli_query($conn, $query);
 
   if (!$addUser) {
