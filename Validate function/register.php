@@ -1,3 +1,4 @@
+<?php include "../header.php" ?>
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
   <h1 class="text-center">Đăng Kí</h1>
   <hr>
@@ -33,7 +34,7 @@
     </div>
   </form>
 </div>
-<?php include "../header.php" ?>
+
 <?php
 if (isset($_POST['signup'])) {
   $name = $_POST['name'];

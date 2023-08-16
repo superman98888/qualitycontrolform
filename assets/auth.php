@@ -37,7 +37,7 @@ if(empty($result)){
 }else{
     $access_token = md5(uniqid().rand(1000000, 9999999));
     $expire_date = Carbon::now()->addDays(30);
-    DB::table("users")->where($map)->update(
+    table("users")->where($map)->update(
         [
             "access_token"=>$access_token,
             "expire_date"=>$expire_date
@@ -47,7 +47,7 @@ if(empty($result)){
     return ['code'=>0, 'data'=>$result, 'msg'=>'User information updated'];
 }
 }catch(Exception $e){
-    return ['code'=>-1, "data"=>"no data avilable", 'msg'=>(string)$e];
+    return ['code'=>-1, "data"=>"no data available", 'msg'=>(string)$e];
 }
 
 }
