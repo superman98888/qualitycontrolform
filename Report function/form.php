@@ -12,45 +12,57 @@ if (isset($_POST['signout'])) {
   header('location: index.php');
 }
 ?>
+<?php
+
+$user_id = $_SESSION['id'];
+
+if ($user_id !== "") {
+	
+  $conn = mysqli_connect('localhost','root','','demo1');
+	$query = mysqli_query($conn, "SELECT username,
+	department, field, contact  FROM users WHERE ID ='$user_id'");
+
+	$row = mysqli_fetch_assoc($query);
+
+    $user_name = $row['username'];
+    $user_contact = $row['contact'];
+    $user_department = $row['department'];
+    $user_field = $row['field'];
+
+}else{
+  session_destroy();
+  header('location: index.php');
+}
+?>
+
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
-  <h1 class="text-center"> Ghi nhận sự cố </h1>
+  <h1 class="text-center"> Phiếu ghi nhận sự cố </h1>
   <hr>
   <form action="" method="post">
     <div class="mb-3">
+      <label for="username" class="form-label"> Người đề xuất </label>
+      <input type="text" class="form-control" name="username" placeholder="" autocomplete="off" readonly 
+      value = "<?php echo($user_name) ;?>" >
+    </div>
+    <div class="mb-3">
       <label for="name" class="form-label"> Khoa </label>
-      <input type="text" class="form-control" name="department" placeholder="" autocomplete="on" readonly>
+      <input type="text" class="form-control" name="department" placeholder="" autocomplete="on" readonly value = "<?php echo($user_department) ;?>">
+    </div>
+    <div class="mb-3">
+      <label for="field" class="form-label"> Lĩnh vực </label>
+      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" readonly value = "<?php echo($user_field) ;?>">
     </div>
     <div class="mb-3">
       <label for="problem" class="form-label"> Vấn đề gặp phải </label>
       <input type="text" class="form-control" name="problem" placeholder="Hãy nhập chi tiết vấn đề bạn gặp phải ở đây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="field" class="form-label"> Lĩnh vực </label>
-      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" readonly>
-    </div>
-    <div class="mb-3">
-      <label for="contact" class="form-label"> Liên lạc </label>
-      <input type="text" class="form-control" name="contact" placeholder="" autocomplete="off" readonly>
-    </div>
-    <div class="mb-3">
       <label for="reportdate" class="form-label"> Ngày đề xuất </label>
       <input type="date" class="form-control" name="reportdate" placeholder="" autocomplete="off" required>
     </div>
-    <div class="mb-3">
-      <label for="username" class="form-label"> Người đề xuất </label>
-      <input type="text" class="form-control" name="username" placeholder="" autocomplete="off" readonly>
-    </div>
-    <div class="mb-3">
-      <label for="username" class="form-label"> Người tiếp nhận </label>
-      <input type="text" class="form-control" name="receiveuser" placeholder="" autocomplete="off" readonly>
-    </div>
-    <div class="mb-3">
-      <label for="executedate" class="form-label"> Ngày xử lý </label>
-      <input type="date" class="form-control" name="executedate" placeholder="" autocomplete="off" readonly>
-    </div>
-    <div class="mb-3">
-      <label for="delaysummary" class="form-label"> Số ngày chờ </label>
-      <input type="number" class="form-control" name="delaysummary" placeholder="" autocomplete="off" readonly>
+       <div class="mb-3">
+      <label for="contact" class="form-label"> Liên lạc </label>
+      <input type="text" class="form-control" name="contact" placeholder="" autocomplete="off" readonly value = "<?php echo($user_contact) ;?>">
     </div>
     <div class="mb-3">
       <label for="note" class="form-label"> Ghi chú </label>
@@ -64,28 +76,23 @@ if (isset($_POST['signout'])) {
     </div>
   </form>
 </div>
-
 <?php
+if (isset($_POST['send'])) {
+  $report_date = $_POST['reportdate'];
+  $user_problem = $_POST['problem'];
+  $user_note = $_POST['note'];
 
-$user_id = $_REQUEST['id'] ??null;
+  $query = "INSERT INTO report(username, contact, department, field, problem, reportdate, note) VALUES('{$user_name}','{$user_contact}','{$user_department}','{$user_field}','{$user_problem}','{$report_date}','{$user_note}')";
+  $addReport = mysqli_query($conn, $query);
 
-if ($user_id !== "") {
-	
-	$query = mysqli_query($conn, "SELECT username,
-	department, field, contact  FROM users WHERE ID ='$user_id'");
-
-	$row = mysqli_fetch_array($query);
-
-	$username = $row["username"] ??null;
-	$department = $row["department"] ??null;
-    $field = $row["field"] ??null;
-    $contact = $row["contact"] ??null;
-
+  if (!$addReport) {
+    echo "Something went wrong" . mysqli_error($conn);
+  } else {
+    echo '<script type="text/javascript">
+       window.onload = function () { alert("Sự cố đã được ghi nhận"); } 
+  </script>';
+    header('location: ../dashboard.php?user_id=' . $user_id);
+  }
 }
-$result = array("$username", "$department", "$field", "$contact");
-
-$myJSON = json_encode($result);
-echo $myJSON;
 ?>
-
 

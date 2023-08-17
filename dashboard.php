@@ -11,6 +11,10 @@ if (isset($_POST['signout'])) {
   session_destroy();
   header('location: index.php');
 }
+if (isset($_POST['report'])) {
+  $user_id = $_SESSION['id'];
+  header('location: ./Report function/form.php?user_id=' . $user_id);
+}
 ?>
 <div class="container col-12 border rounded mt-3">
   <h1 class=" mt-3 text-center">Xin chào,
@@ -19,7 +23,9 @@ if (isset($_POST['signout'])) {
                 </strong> </h1>
   <hr>
   
-
+  <form action="" method="post">
+    <button type="submit" name='report' class=" btn btn-warning mb-3"> Ghi nhận </button>
+  </form>
   <form action="" method="post">
     <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
   </form>
