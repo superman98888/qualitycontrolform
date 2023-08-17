@@ -18,16 +18,16 @@
       <small class="text-muted">Vui lòng không chia sẻ mật khẩu</small>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label"> Liên lạc </label>
-      <input type="email" class="form-control" name="email" placeholder="Nhập chi tiết phương thức liên lạc của bạn ở dây" autocomplete="off" required>
+      <label for="contact" class="form-label"> Liên lạc </label>
+      <input type="text" class="form-control" name="contact" placeholder="Nhập chi tiết phương thức liên lạc của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label"> Khoa </label>
-      <input type="email" class="form-control" name="email" placeholder="Nhập tên Khoa của bạn ở dây" autocomplete="off" required>
+      <label for="department" class="form-label"> Khoa </label>
+      <input type="text" class="form-control" name="department" placeholder="Nhập tên Khoa của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label"> Lĩnh vực </label>
-      <input type="email" class="form-control" name="email" placeholder="Nhập lĩnh vực của bạn ở dây" autocomplete="off" required>
+      <label for="field" class="form-label"> Lĩnh vực </label>
+      <input type="text" class="form-control" name="field" placeholder="Nhập lĩnh vực của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
       <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary">

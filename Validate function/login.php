@@ -3,8 +3,8 @@
   <hr>
   <form action="" method="post">
     <div class="mb-3">
-      <label for="email" class="form-label">Tên đăng nhập </label>
-      <input type="email" class="form-control" name="email" placeholder="Nhập tên đăng nhập của bạn ở đây" autocomplete="off" required>
+      <label for="username" class="form-label">Tên đăng nhập </label>
+      <input type="text" class="form-control" name="username" placeholder="Nhập tên đăng nhập của bạn ở đây" autocomplete="off" required>
       <small class="text-muted">Kiểm tra kĩ tên đăng nhập của bạn</small>
     </div>
     <div class="mb-3">
@@ -22,10 +22,10 @@
 <?php
 
 if (isset($_POST['signin'])) {
-  $user_name = $_POST['username'];
+  $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $query = "SELECT * from users WHERE username = '$user_name' AND password = '$password'";
+  $query = "SELECT * from users WHERE username = '$username' AND password = '$password'";
   $user = mysqli_query($conn, $query);
 
   if (!$user) {
@@ -42,7 +42,7 @@ if (isset($_POST['signin'])) {
     $user_department = $row['department'];
     $user_field = $row['field'];
   }
-  if ($user_email == $email  &&  $user_password == $password) {
+  if ($user_name == $username  &&  $user_password == $password) {
 
     $_SESSION['id'] = $user_id;       
     $_SESSION['name'] = $user_name;   
