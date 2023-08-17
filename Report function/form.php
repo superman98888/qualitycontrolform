@@ -76,10 +76,10 @@ if ($user_id !== "") {
 
 	$row = mysqli_fetch_array($query);
 
-	$username = $row["username"];
-	$department = $row["department"];
-    $field = $row["field"];
-    $contact = $row["contact"];
+	$username = $row["username"] ??null;
+	$department = $row["department"] ??null;
+    $field = $row["field"] ??null;
+    $contact = $row["contact"] ??null;
 
 }
 $result = array("$username", "$department", "$field", "$contact");
