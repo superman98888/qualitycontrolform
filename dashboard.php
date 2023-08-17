@@ -18,8 +18,7 @@ if (isset($_POST['signout'])) {
                     <?php echo $_SESSION['name']; ?>
                 </strong> </h1>
   <hr>
-  <h4> <?php echo $_SESSION['name']; ?> </h4>
-
+  
 
   <form action="" method="post">
     <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
