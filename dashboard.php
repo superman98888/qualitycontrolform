@@ -22,11 +22,13 @@ if (isset($_POST['report'])) {
                     <?php echo $_SESSION['name']; ?>
                 </strong> </h1>
   <hr>
-  
+  <div class="sidenav">
+  <a href="#">About</a>
   <form action="" method="post">
     <button type="submit" name='report' class=" btn btn-warning mb-3"> Ghi nhận </button>
   </form>
   <form action="" method="post">
     <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
   </form>
+  </div>
 </div>

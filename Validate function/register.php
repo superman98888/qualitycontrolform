@@ -44,7 +44,7 @@ if (isset($_POST['signup'])) {
   $field = $_POST['field'];
   $contact = $_POST['contact'];
 
-  $query = "INSERT INTO users(username,email,password,contact, department, field) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}','{$field}')";
+  $query = "INSERT INTO users(username, email, password, contact, department, field) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}','{$field}')";
   $addUser = mysqli_query($conn, $query);
 
   if (!$addUser) {
