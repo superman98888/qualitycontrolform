@@ -13,7 +13,11 @@ if (isset($_POST['signout'])) {
 }
 if (isset($_POST['report'])) {
   $user_id = $_SESSION['id'];
-  header('location: ./Report function/form.php?user_id=' . $user_id);
+  header('location: ./CRUD report/createform.php?user_id=' . $user_id);
+}
+if (isset($_POST['view'])) {
+  $user_id = $_SESSION['id'];
+  header('location: ./CRUD report/viewform.php?user_id=' . $user_id);
 }
 ?>
 <div class="container col-12 border rounded mt-3">
@@ -23,9 +27,11 @@ if (isset($_POST['report'])) {
                 </strong> </h1>
   <hr>
   <div class="sidenav">
-  <a href="#">About</a>
   <form action="" method="post">
-    <button type="submit" name='report' class=" btn btn-warning mb-3"> Ghi nhận </button>
+    <button type="submit" name='report' class=" btn btn-warning mb-3"> Tạo ghi nhận mới </button>
+  </form>
+  <form action="" method="post">
+    <button type="submit" name='view' class=" btn btn-warning mb-3"> Danh sách ghi nhận </button>
   </form>
   <form action="" method="post">
     <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>

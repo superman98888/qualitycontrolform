@@ -88,7 +88,7 @@ $user_id = $_SESSION['id'];
   <hr>
   <form action="" method="post">
     <div class="mb-3">
-      <label for="name" class="form-label"> Khoa </label>
+      <label for="department" class="form-label"> Khoa </label>
       <input type="text" class="form-control" name="department" placeholder="" autocomplete="on" required >
     </div> 
     <div class="mb-3">
@@ -105,11 +105,11 @@ $user_id = $_SESSION['id'];
     </div>
     <div class="mb-3">
       <label for="reportdate" class="form-label"> Ngày đề xuất </label>
-      <input type="date" class="form-control" name="reportdate" placeholder="" autocomplete="off" required>
+      <input type="date" class="form-control" name="reportdate" placeholder="" autocomplete="on" required>
     </div>
     <div class="mb-3">
-      <label for="username" class="form-label"> Người đề xuất </label>
-      <input type="text" class="form-control" name="username" placeholder="" autocomplete="off" required >
+      <label for="reporter" class="form-label"> Người đề xuất </label>
+      <input type="text" class="form-control" name="reporter" placeholder="" autocomplete="off" required >
     </div> 
     <div class="mb-3">
       <label for="executer" class="form-label"> Người tiếp nhận </label>
@@ -137,7 +137,7 @@ $user_id = $_SESSION['id'];
 </div> 
 <?php
 if (isset($_POST['send'])) {
-  $username = $_POST['username'];
+  $reporter = $_POST['reporter'];
   $department = $_POST['department'];
   $field = $_POST['field'];
   $contact = $_POST['contact'];
@@ -147,16 +147,16 @@ if (isset($_POST['send'])) {
   $executer = $_POST['executer'];
   $executedate = $_POST['executedate'];
 
-  $query = "INSERT INTO report(department, problem, field, contact, reportdate, username, executer, executedate, note) VALUES('{$department}', '{$problem}', '{$field}', '{$contact}', '{$reportdate}', '{$username}', '{$executer}','{$executedate}', '{$note}')";
+  $query = "INSERT INTO report(department, problem, field, contact, reportdate, reporter, executer, executedate, note) VALUES('{$department}', '{$problem}', '{$field}', '{$contact}', '{$report_date}', '{$reporter}', '{$executer}','{$executedate}', '{$note}')";
   $addReport = mysqli_query($conn, $query);
 
   if (!$addReport) {
     echo "Something went wrong" . mysqli_error($conn);
   } else {
+    header('location: ../dashboard.php?user_id=' . $user_id);
     echo '<script type="text/javascript">
        window.onload = function () { alert("Sự cố đã được ghi nhận"); } 
   </script>';
-    header('location: ../dashboard.php?user_id=' . $user_id);
   }
 }
 ?>
