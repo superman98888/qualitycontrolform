@@ -99,7 +99,7 @@ $user_id = $_SESSION['id'];
                             <a href="editform.php?reportid=<?php echo $row['reportID'] ?>" id="btnUpdate" class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a href="" id="btnDelete" class="btn btn-danger">
+                            <a href="delete.php?reportid=<?php echo $row['reportID'] ?>" id="btnDelete" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
