@@ -95,7 +95,6 @@ if (isset($_POST['signout'])) {
 
 
     <?php
-    // 4. Nếu người dùng có bấm nút Đăng ký thì thực thi câu lệnh UPDATE
     if (isset($_POST['btnSave'])) {
         // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
         $reporter = $_POST['reporter'];
@@ -107,18 +106,15 @@ if (isset($_POST['signout'])) {
         $note = $_POST['note'];
         $executer = $_POST['executer'];
         $executedate = $_POST['executedate'];
- // Lấy ngày giờ hiện tại theo định dạng `Năm-Tháng-Ngày Giờ-Phút-Giây`. Vd: 2020-02-18 09:12:12
 
-        // Câu lệnh UPDATE
         $sql = "UPDATE report SET reporter='$reporter', department='$department', field='$field', contact='$contact', problem='$problem', reportdate='$reportdate', executiondate='$reportdate', executer='$executer', note='$note' WHERE  reportID='$reportID'";
 
-        // Thực thi UPDATE
+
         mysqli_query($conn, $sql);
 
-        // Đóng kết nối
+
         mysqli_close($conn);
 
-        // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
         header('location:../dashboard.php?user_id=' . $user_id);
     }
     ?>
