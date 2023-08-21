@@ -146,8 +146,9 @@ if (isset($_POST['send'])) {
   $note = $_POST['note'];
   $executer = $_POST['executer'];
   $executedate = $_POST['executedate'];
+  $delaysummary = $executedate->diff($report_date);
 
-  $query = "INSERT INTO report(department, problem, field, contact, reportdate, reporter, executer, executedate, note) VALUES('{$department}', '{$problem}', '{$field}', '{$contact}', '{$report_date}', '{$reporter}', '{$executer}','{$executedate}', '{$note}')";
+  $query = "INSERT INTO report(department, problem, field, contact, reportdate, reporter, executer, executedate, delaysummary, note) VALUES('{$department}', '{$problem}', '{$field}', '{$contact}', '{$report_date}', '{$reporter}', '{$executer}','{$executedate}','{$delaysummary}', '{$note}')";
   $addReport = mysqli_query($conn, $query);
 
   if (!$addReport) {
