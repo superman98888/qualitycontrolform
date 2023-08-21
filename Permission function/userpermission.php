@@ -1,39 +1,44 @@
 <?php session_start();     ?>    
 <?php include "../header.php" ?>
-
-<?php
-if (!isset($_SESSION['id'])) {         
-  header('location: login.php');  
-}
-?>
+<?php $user_id = $_SESSION['id']; ?>
 <?php
 if (isset($_POST['signout'])) {
   session_destroy();
   header('location: index.php');
 }
+if (!isset($_SESSION['id'])) {
+    header('location: index.php');
+}else {
+	if (isset($_SESSION['id'])) {
+		$roleid = $_SESSION['role_ID'];
+		if ($roleid != '15') {
+			header('location: ../dashboard.php?user_id=' . $user_id);
+    echo '<script type="text/javascript">
+       window.onload = function () { alert("Bạn không đủ quyền truy cập website này"); } 
+  </script>';
+		}
+	} 
+}
 ?>
-<?php
 
-$user_id = $_SESSION['id'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View report list</title>
+    <title>View permission</title>
 
 </head>
 
 <body>
 
     <div class="container">
-        <h1>Xem danh sách ghi nhận</h1>
+        <h1>Danh sách quyền cho user</h1>
 
         <?php
 
-        $sql = "select * from `report` order by 'reportID' desc";
+        $sql = "select * from `report`";
 
         $result = mysqli_query($conn, $sql);
 
