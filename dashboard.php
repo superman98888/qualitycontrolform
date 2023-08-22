@@ -1,9 +1,9 @@
-<?php session_start();       // Start the session ?>    
+<?php session_start();        ?>    
 <?php include "header.php" ?>
 
 <?php
-if (!isset($_SESSION['id'])) {         // condition Check: if session is not set. 
-  header('location: login.php');   // if not set the user is send back to login page. login.php
+if (!isset($_SESSION['id'])) {        
+  header('location: login.php');   
 }
 ?>
 <?php
