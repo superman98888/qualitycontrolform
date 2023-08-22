@@ -96,7 +96,6 @@ if (isset($_POST['signout'])) {
 
     <?php
     if (isset($_POST['btnSave'])) {
-        // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
         $reporter = $_POST['reporter'];
         $department = $_POST['department'];
         $field = $_POST['field'];

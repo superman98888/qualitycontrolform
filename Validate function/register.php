@@ -4,8 +4,8 @@
   <hr>
   <form action="" method="post">
     <div class="mb-3">
-      <label for="name" class="form-label">Tên</label>
-      <input type="text" class="form-control" name="name" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
+      <label for="username" class="form-label">Tên</label>
+      <input type="text" class="form-control" name="username" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label"> Email </label>
@@ -34,15 +34,40 @@
     </div>
   </form>
 </div>
+<div id="warningModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">THÔNG BÁO</h4>
+      </div>
+      <div class="modal-body">
+        <p>Tên hoặc email của bạn đã có người sử dụng. Vui lòng chọn tên hoặc email khác</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php
 if (isset($_POST['signup'])) {
-  $name = $_POST['name'];
+  $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
   $department = $_POST['department'];
   $field = $_POST['field'];
   $contact = $_POST['contact'];
+
+  $check = "SELECT * FROM users WHERE email = '$email' OR username = '$username'";
+  $rs = mysqli_query($conn,$check);
+  $data = mysqli_fetch_array($rs, MYSQLI_NUM);
+
+if($data[0] > 1) {
+    echo "Tên hoặc email đã có người sử dụng. Vui lòng chọn tên hoặc email khác<br/>";
+
+}else{
 
   $query = "INSERT INTO users(username, email, password, contact, department, field) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}','{$field}')";
   $addUser = mysqli_query($conn, $query);
@@ -52,5 +77,6 @@ if (isset($_POST['signup'])) {
   } else {
     header('location: login.php');
   }
+}
 }
 ?>
