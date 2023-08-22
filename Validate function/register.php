@@ -1,8 +1,28 @@
-<?php include "../header.php" ?>
+<?php
+
+use JetBrains\PhpStorm\Language;
+
+ include "../header.php" ?>
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
   <h1 class="text-center">Đăng Kí</h1>
   <hr>
   <form action="" method="post">
+    <div id="warningModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">THÔNG BÁO</h4>
+      </div>
+      <div class="modal-body">
+        <p>Tên hoặc email của bạn đã có người sử dụng. Vui lòng chọn tên hoặc email khác</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="mb-3">
       <label for="username" class="form-label">Tên</label>
       <input type="text" class="form-control" name="username" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
@@ -34,23 +54,14 @@
     </div>
   </form>
 </div>
-<div id="warningModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">THÔNG BÁO</h4>
-      </div>
-      <div class="modal-body">
-        <p>Tên hoặc email của bạn đã có người sử dụng. Vui lòng chọn tên hoặc email khác</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<script type="application/javascript">
+  $('#warningModal').modal({ show: false});
+    if($warningModal == true){
+      $('#warningModal').modal({ show: true});
+      location.href = location.href;
+      $warningModal = false;
+    }
+</script>
 <?php
 if (isset($_POST['signup'])) {
   $username = $_POST['username'];
@@ -65,7 +76,8 @@ if (isset($_POST['signup'])) {
   $data = mysqli_fetch_array($rs, MYSQLI_NUM);
 
 if($data[0] > 1) {
-    echo "Tên hoặc email đã có người sử dụng. Vui lòng chọn tên hoặc email khác<br/>";
+
+      $warningModal = true;
 
 }else{
 
