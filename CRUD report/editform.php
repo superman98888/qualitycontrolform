@@ -50,15 +50,15 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td>Khoa</td>
-                    <td><input type="text" name="department" id="department" class="form-control" value="<?php echo $reportRow['department'] ?>" /></td>
+                    <td><input type="text" name="department" id="department" class="form-control" value="<?php echo $reportRow['department'] ?>" readonly /></td>
                 </tr>
                 <tr>
                     <td>Vấn đề gặp phải</td>
-                    <td><input type="text" name="problem" id="problem" class="form-control" value="<?php echo $reportRow['problem'] ?>"  /></td>
+                    <td><textarea name="problem" id="problem" class="form-control" value="<?php echo $reportRow['problem'] ?>"  ></textarea></td>
                 </tr>
                 <tr>
                     <td>Lĩnh vực</td>
-                    <td><textarea name="field" id="field" class="form-control" value="<?php echo $reportRow['field'] ?>" ></textarea></td>
+                    <td><input type="text" name="field" id="field" class="form-control" value="<?php echo $reportRow['field'] ?>" ></td>
                 </tr>
                 <tr>
                     <td>Liên lạc</td>
@@ -70,15 +70,7 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td>Người đề xuất</td>
-                    <td><input type="text" name="reporter" id="reporter" class="form-control" value="<?php echo $reportRow['reporter'] ?>" /></td>
-                </tr>
-                <tr>
-                    <td>Người tiếp nhận</td>
-                    <td><input type="text" name="executer" id="executer" class="form-control" value="<?php echo $reportRow['executer'] ?>" /></td>
-                </tr>
-                <tr>
-                    <td>Ngày tiếp nhận</td>
-                    <td><input type="date" name="executedate" id="executedate" class="form-control" value="<?php echo $reportRow['executedate'] ?>" /></td>
+                    <td><input type="text" name="reporter" id="reporter" class="form-control" value="<?php echo $reportRow['reporter'] ?>" readonly/></td>
                 </tr>
                 <tr>
                     <td>Ghi chú</td>

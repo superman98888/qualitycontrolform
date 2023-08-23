@@ -30,11 +30,11 @@ $user_id = $_SESSION['id'];
 <body>
 
     <div class="container">
-        <h1>Xem danh sách ghi nhận</h1>
+        <h1>Danh sách ghi nhận</h1>
 
         <?php
 
-        $sql = "select * from `report` order by 'reportID' desc";
+        $sql = "select * from `report` order by 'reportID' asc";
 
         $result = mysqli_query($conn, $sql);
 
@@ -60,7 +60,7 @@ $user_id = $_SESSION['id'];
         ?>
 
         <a href="createform.php" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Ghi nhận sự cố
+        <i class="fa-solid fa-plus fa-beat"></i> Ghi nhận sự cố
         </a>
 
         <table class="table table-borderd">
@@ -98,10 +98,10 @@ $user_id = $_SESSION['id'];
                         <td><?php echo $row['note'];?></td>
                         <td>
                             <a href="editform.php?reportid=<?php echo $row['reportID'] ?>" id="btnUpdate" class="btn btn-primary">
-                                <i class="fas fa-edit"></i>
+                            <i class="fa-solid fa-pen-to-square fa-beat-fade"></i>
                             </a>
                             <a href="delete.php?reportid=<?php echo $row['reportID'] ?>" id="btnDelete" class="btn btn-danger">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fa-regular fa-trash-can fa-bounce"></i>
                             </a>
                         </td>
                     </tr>

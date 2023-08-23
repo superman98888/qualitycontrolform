@@ -29,13 +29,16 @@ if (isset($_POST['view'])) {
   <hr>
   <div class="sidenav">
   <form action="" method="post">
-    <button type="submit" name='report' class=" btn btn-warning mb-3"> Tạo ghi nhận mới </button>
+    <button type="submit" name='report' class=" btn btn-warning mb-3">
+      <i class="fa-solid fa-plus fa-beat"></i> Tạo ghi nhận mới </button>
   </form>
   <form action="" method="post">
-    <button type="submit" name='view' class=" btn btn-warning mb-3"> Danh sách ghi nhận </button>
+    <button type="submit" name='view' class=" btn btn-warning mb-3">
+      <i class="fa-solid fa-circle-user fa-fade"></i> Danh sách ghi nhận </button>
   </form>
   <form action="" method="post">
-    <button type="submit" name='signout' class=" btn btn-warning mb-3"> Đăng xuất </button>
+    <button type="submit" name='signout' class=" btn btn-warning mb-3">
+      <i class="fa-solid fa-circle-xmark fa-beat-fade"></i> Đăng xuất </button>
   </form>
   </div>
 </div>
