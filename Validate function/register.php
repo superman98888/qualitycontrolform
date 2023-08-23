@@ -7,7 +7,7 @@ use JetBrains\PhpStorm\Language;
   <h1 class="text-center">Đăng Kí</h1>
   <hr>
   <form action="" method="post">
-    <div id="warningModal" class="modal fade" role="dialog">
+    <!-- <div id="warningModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,7 +21,7 @@ use JetBrains\PhpStorm\Language;
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
     <div class="mb-3">
       <label for="username" class="form-label">Tên</label>
@@ -54,14 +54,14 @@ use JetBrains\PhpStorm\Language;
     </div>
   </form>
 </div>
-<script type="application/javascript">
+<!-- <script type="application/javascript">
   $('#warningModal').modal({ show: false});
     if($warningModal == true){
       $('#warningModal').modal({ show: true});
       location.href = location.href;
       $warningModal = false;
     }
-</script>
+</script> -->
 <?php
 if (isset($_POST['signup'])) {
   $username = $_POST['username'];
