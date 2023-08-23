@@ -7,6 +7,7 @@ if (isset($_POST['signout'])) {
   header('location: index.php');
 }
 if (!isset($_SESSION['id'])) {
+    session_destroy();
     header('location: index.php');
 }else {
 	if (isset($_SESSION['id'])) {

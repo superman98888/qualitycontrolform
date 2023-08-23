@@ -2,7 +2,8 @@
 <?php include "../header.php" ?>
 
 <?php
-if (!isset($_SESSION['id'])) {         
+if (!isset($_SESSION['id'])) {      
+  session_destroy();   
   header('location: login.php');  
 }
 ?>
