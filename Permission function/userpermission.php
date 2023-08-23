@@ -39,7 +39,7 @@ if (!isset($_SESSION['id'])) {
 
         <?php
 
-        $sql = "select * from `report`";
+        $sql = "select * from `users`";
 
         $result = mysqli_query($conn, $sql);
 
