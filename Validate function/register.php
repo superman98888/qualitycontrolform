@@ -21,8 +21,8 @@ use JetBrains\PhpStorm\Language;
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>
-  </div> -->
-</div>
+  </div>
+</div> -->
     <div class="mb-3">
       <label for="username" class="form-label">Tên</label>
       <input type="text" class="form-control" name="username" placeholder="Nhập tên bạn ở đây" autocomplete="off" required>
