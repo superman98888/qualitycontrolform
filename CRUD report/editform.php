@@ -20,9 +20,11 @@ if (isset($_POST['signout'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cập nhật ghi nhận</title>
+    <title>Cập nhật đề xuất</title>
 </head>
 <?php
+
+    
     
     if(isset($_GET['reportid'])){
     $reportid = $_GET['reportid'];
@@ -62,7 +64,7 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td>Liên lạc</td>
-                    <td><input type="text" name="contact" id="contact" class="form-control" value="<?php echo $reportRow['contact'] ?>" /></td>
+                    <td><input type="text" name="contact" id="contact" class="form-control" value="<?php echo $reportRow['contact'] ?>"  readonly /></td>
                 </tr>
                 <tr>
                     <td>Ngày đề xuất</td>
@@ -70,7 +72,7 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td>Người đề xuất</td>
-                    <td><input type="text" name="reporter" id="reporter" class="form-control" value="<?php echo $reportRow['reporter'] ?>" readonly/></td>
+                    <td><input type="text" name="reporter" id="reporter" class="form-control" value="<?php echo $reportRow['reporter'] ?>" readonly /></td>
                 </tr>
                 <tr>
                     <td>Ghi chú</td>
@@ -78,7 +80,7 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button name="btnSave" class="btn btn-primary"><i class="fas fa-save"></i> Lưu chỉnh sửa</button>
+                        <button name="btnSave" class="btn btn-primary"><i class="fas fa-save"></i> Lưu chỉnh sửa </button>
                     </td>
                 </tr>
             </table>
@@ -89,17 +91,12 @@ if (isset($_POST['signout'])) {
 
     <?php
     if (isset($_POST['btnSave'])) {
-        $reporter = $_POST['reporter'];
-        $department = $_POST['department'];
         $field = $_POST['field'];
-        $contact = $_POST['contact'];
         $problem = $_POST['problem'];
         $report_date = $_POST['reportdate'] ;
         $note = $_POST['note'];
-        $executer = $_POST['executer'];
-        $executedate = $_POST['executedate'];
 
-        $sql = "UPDATE report SET reporter='$reporter', department='$department', field='$field', contact='$contact', problem='$problem', reportdate='$reportdate', executiondate='$reportdate', executer='$executer', note='$note' WHERE  reportID='$reportID'";
+        $sql = "UPDATE report SET field = '$field', problem = '$problem', reportdate = '$reportdate', note = '$note' WHERE  reportID = '$reportID'";
 
 
         mysqli_query($conn, $sql);
