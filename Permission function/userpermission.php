@@ -2,24 +2,24 @@
 <?php include "../header.php" ?>
 <?php $user_id = $_SESSION['id']; ?>
 <?php
-if (isset($_POST['signout'])) {
-  session_destroy();
-  header('location: index.php');
-}
-if (!isset($_SESSION['id'])) {
-    session_destroy();
-    header('location: index.php');
-}else {
-	if (isset($_SESSION['id'])) {
-		$roleid = $_SESSION['role_ID'];
-		if ($roleid != '15') {
-			header('location: ../dashboard.php?user_id=' . $user_id);
-    echo '<script type="text/javascript">
-       window.onload = function () { alert("Bạn không đủ quyền truy cập website này"); } 
-  </script>';
-		}
-	} 
-}
+// if (isset($_POST['signout'])) {
+//   session_destroy();
+//   header('location: index.php');
+// }
+// if (!isset($_SESSION['id'])) {
+//     session_destroy();
+//     header('location: ../index.php');
+// }else {
+// 	if (isset($_SESSION['id'])) {
+// 		$roleid = $_SESSION['role_ID'];
+// 		if ($roleid != '15') {
+// 			header('location: ../dashboard.php?user_id=' . $user_id);
+//     echo '<script type="text/javascript">
+//        window.onload = function () { alert("Bạn không đủ quyền truy cập website này"); } 
+//   </script>';
+// 		}
+// 	} 
+// }
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,6 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View permission</title>
-
 </head>
 
 <body>
@@ -39,7 +38,10 @@ if (!isset($_SESSION['id'])) {
 
         <?php
 
-        $sql = "select * from `users`";
+        $sql = "select username from users and permission_desc from permissions
+        inner join users-permissions on ID = user_ID
+        inner join users-permissions on permission_ID = permission_ID
+        order by ID";
 
         $result = mysqli_query($conn, $sql);
 
@@ -48,42 +50,34 @@ if (!isset($_SESSION['id'])) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $data[] = array(
                 'rowNum' => $rowNum,
-                'reportID' => $row['reportID'],
-                'reporter' => $row['reporter'],
-                'department' => $row['department'],
-                'problem' => $row['problem'],
-                'field' => $row['field'],
-                'contact' => $row['contact'],
-                'reportdate' => $row['reportdate'],
-                'executer' => $row['executer'],
-                'executedate' => $row['executedate'],
-                'delaysummary' => $row['delaysummary'],
-                'note' => $row['note'],
+                'username' => $row['username'],
+                'permission_desc' => $row['permission_desc'],
             );
             $rowNum++;
         }
         ?>
-
-        <a href="createform.php" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Ghi nhận sự cố
-        </a>
 
         <table class="table table-borderd">
             <thead>
                 <tr>
                     <th>STT</th>
                     <th>ID</th>
-                    <th>Người đề xuất</th>
-                    <th>Khoa</th>
-                    <th>Vấn đề gặp phải</th>
-                    <th>Lĩnh vực</th>
-                    <th>Liên lạc</th>
-                    <th>Ngày đề xuất</th>
-                    <th>Người tiếp nhận</th>
-                    <th>Ngày tiếp nhận</th>
-                    <th>Số ngày chờ</th>
-                    <th>Ghi chú</th>
+                    <th>Người dùng</th>
+                    <th>Quyền truy cập</th>
                     <th>Thao tác</th>
+                    <td><input type="checkbox"></td>
+                        <td>hoge</td>
+                        <td>hoge@hoge.com</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>foo</td>
+                        <td>foo@foo.com</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" disabled></td>
+                        <td>bar</td>
+                        <td>bar@bar.com</td>
                 </tr>
             </thead>
             <tbody>
