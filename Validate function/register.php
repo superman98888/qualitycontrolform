@@ -46,8 +46,11 @@ use JetBrains\PhpStorm\Language;
       <input type="text" class="form-control" name="department" placeholder="Nhập tên Khoa của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary">
+      <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary"><i class="fa-solid fa-hospital fa-beat-fade"></i>
     </div>
+    <td colspan="2">
+      <button name="btnCancel" class="btn btn-secondary" button onclick="history.go(-1);"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
+    </td>
   </form>
 </div>
 <!-- <script type="application/javascript">

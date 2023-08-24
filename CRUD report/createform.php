@@ -21,7 +21,7 @@ if ($user_id !== "") {
 	
   $conn = mysqli_connect('localhost','root','','demo1');
 	$query = mysqli_query($conn, "SELECT username,
-	department, field, contact  FROM users WHERE ID ='$user_id'");
+	department, contact  FROM users WHERE ID ='$user_id'");
 
 	$row = mysqli_fetch_assoc($query);
 
@@ -53,7 +53,7 @@ if ($user_id !== "") {
     </div> 
     <div class="mb-3">
       <label for="field" class="form-label"> Lĩnh vực </label>
-      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" readonly >
+      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" required >
     </div>
     <div class="mb-3">
       <label for="problem" class="form-label"> Vấn đề gặp phải </label>
@@ -75,7 +75,7 @@ if ($user_id !== "") {
         <button name="btnSend" class="btn btn-primary"><i class="fa-solid fa-floppy-disk fa-beat-fade"></i> Gửi báo cáo </button>
       </td>
       <td colspan="2">
-        <button name="btnCancel" class="btn btn-secondary"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
+        <button name="btnCancel" class="btn btn-secondary" button onclick="history.go(-1);"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
       </td>
   </form>
 </div> 

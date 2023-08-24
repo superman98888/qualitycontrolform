@@ -13,8 +13,11 @@
       <small class="text-muted">Vui lòng không chia sẻ mật khẩu</small>
     </div>
     <div class="mb-3">
-      <input type="submit" name="signin" value="Đăng nhập" class="btn btn-primary">
+      <input type="submit" name="signin" value="Đăng nhập" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket fa-beat"></i>
     </div>
+    <td colspan="2">
+      <button name="btnCancel" class="btn btn-secondary" button onclick="history.go(-1);"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
+    </td>
   </form>
 </div>
 <?php session_start(); ?>

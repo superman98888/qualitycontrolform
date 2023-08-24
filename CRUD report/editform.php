@@ -82,6 +82,9 @@ if (isset($_POST['signout'])) {
                     <td colspan="2">
                         <button name="btnSave" class="btn btn-primary"><i class="fa-solid fa-floppy-disk fa-beat-fade"></i> Lưu chỉnh sửa </button>
                     </td>
+                    <td colspan="2">
+                        <button name="btnCancel" class="btn btn-secondary" button onclick="history.go(-1);"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
+                    </td>
                 </tr>
             </table>
         </form>
