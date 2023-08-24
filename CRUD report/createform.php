@@ -28,7 +28,6 @@ if ($user_id !== "") {
     $user_name = $row['username'];
     $user_contact = $row['contact'];
     $user_department = $row['department'];
-    $user_field = $row['field'];
 
 }else{
   session_destroy();
@@ -54,7 +53,7 @@ if ($user_id !== "") {
     </div> 
     <div class="mb-3">
       <label for="field" class="form-label"> Lĩnh vực </label>
-      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" readonly value = "<?php echo($user_field) ;?>">
+      <input type="text" class="form-control" name="field" placeholder="" autocomplete="on" readonly >
     </div>
     <div class="mb-3">
       <label for="problem" class="form-label"> Vấn đề gặp phải </label>
@@ -72,27 +71,23 @@ if ($user_id !== "") {
       <label for="note" class="form-label"> Ghi chú </label>
       <input type="text" class="form-control" id ="note" name="note" placeholder="" autocomplete="off">
     </div>
-    <div class="mb-3">
-      <input type="submit" name="send" value="Gửi báo cáo" class="btn btn-primary">
-    </div>
-    <div class="mb-3">
-      <input type="reset" name="cancel" value="Hủy" class="btn btn-secondary">
-    </div>
+      <td colspan="2">
+        <button name="btnSend" class="btn btn-primary"><i class="fa-solid fa-floppy-disk fa-beat-fade"></i> Gửi báo cáo </button>
+      </td>
+      <td colspan="2">
+        <button name="btnCancel" class="btn btn-secondary"><i class="fa-solid fa-trash-can fa-bounce"></i> Hủy </button>
+      </td>
   </form>
 </div> 
 <?php
-if (isset($_POST['send'])) {
-  $reporter = $_POST['username'];
-  $department = $_POST['department'];
+if (isset($_POST['btnSend'])) {
   $field = $_POST['field'];
   $contact = $_POST['contact'];
   $problem = $_POST['problem'];
   $report_date = $_POST['reportdate'];
   $note = $_POST['note'];
-  $executer = $_POST['executer'];
-  $executedate = $_POST['executedate'];
 
-  $query = "INSERT INTO report(department, problem, field, contact, reportdate, reporter, note) VALUES('{$department}', '{$problem}', '{$field}', '{$contact}', '{$report_date}', '{$reporter}','{$note}')";
+  $query = "INSERT INTO report(department, problem, field, contact, reportdate, reporter, note) VALUES('{$user_department}', '{$problem}', '{$field}', '{$user_contact}', '{$report_date}', '{$user_name}','{$note}')";
   $addReport = mysqli_query($conn, $query);
 
   if (!$addReport) {

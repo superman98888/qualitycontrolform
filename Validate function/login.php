@@ -40,7 +40,6 @@ if (isset($_POST['signin'])) {
     $user_password = $row['password'];
     $user_contact = $row['contact'];
     $user_department = $row['department'];
-    $user_field = $row['field'];
   }
   if ($user_name == $username  &&  $user_password == $password) {
 
@@ -49,7 +48,6 @@ if (isset($_POST['signin'])) {
     $_SESSION['email'] = $user_email; 
     $_SESSION['contact'] = $user_contact;
     $_SESSION['department'] = $user_department;
-    $_SESSION['field'] = $user_field;
     
     header('location: ../dashboard.php?user_id=' . $user_id);
   } else {

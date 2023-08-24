@@ -46,10 +46,6 @@ use JetBrains\PhpStorm\Language;
       <input type="text" class="form-control" name="department" placeholder="Nhập tên Khoa của bạn ở dây" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="field" class="form-label"> Lĩnh vực </label>
-      <input type="text" class="form-control" name="field" placeholder="Nhập lĩnh vực của bạn ở dây" autocomplete="off" required>
-    </div>
-    <div class="mb-3">
       <input type="submit" name="signup" value="Đăng kí" class="btn btn-primary">
     </div>
   </form>
@@ -68,7 +64,6 @@ if (isset($_POST['signup'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   $department = $_POST['department'];
-  $field = $_POST['field'];
   $contact = $_POST['contact'];
 
   $check = "SELECT * FROM users WHERE email = '$email' OR username = '$username'";
@@ -81,7 +76,7 @@ if($data[0] > 1) {
 
 }else{
 
-  $query = "INSERT INTO users(username, email, password, contact, department, field) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}','{$field}')";
+  $query = "INSERT INTO users(username, email, password, contact, department) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}'";
   $addUser = mysqli_query($conn, $query);
 
   if (!$addUser) {

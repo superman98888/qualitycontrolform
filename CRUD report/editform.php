@@ -80,7 +80,7 @@ if (isset($_POST['signout'])) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button name="btnSave" class="btn btn-primary"><i class="fas fa-save"></i> Lưu chỉnh sửa </button>
+                        <button name="btnSave" class="btn btn-primary"><i class="fa-solid fa-floppy-disk fa-beat-fade"></i> Lưu chỉnh sửa </button>
                     </td>
                 </tr>
             </table>

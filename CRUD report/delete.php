@@ -23,7 +23,7 @@ $reportid = $_GET['reportid'];
 $sql = "DELETE FROM `report` WHERE reportID = $reportid;";
 header('location: viewform.php?user_id=' . $user_id);
 echo '<script type="text/javascript">
-   window.onload = function () { alert("Sự cố đã bị xóa"); } 
+   window.onload = function () { alert("Đề xuất đã bị xóa"); } 
 </script>';
 $result = mysqli_query($conn, $sql);
 
