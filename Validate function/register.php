@@ -1,8 +1,4 @@
-<?php
-
-use JetBrains\PhpStorm\Language;
-
- include "../header.php" ?>
+<?php include "../header.php" ?>
 <div class="container col-4 border rounded bg-light mt-5" style='--bs-bg-opacity: .5;'>
   <h1 class="text-center">Đăng Kí</h1>
   <hr>
@@ -69,24 +65,16 @@ if (isset($_POST['signup'])) {
   $department = $_POST['department'];
   $contact = $_POST['contact'];
 
-  $check = "SELECT * FROM users WHERE email = '$email' OR username = '$username'";
-  $rs = mysqli_query($conn,$check);
-  $data = mysqli_fetch_array($rs, MYSQLI_NUM);
-
-if($data[0] > 1) {
-
-      $warningModal = true;
-
-}else{
-
-  $query = "INSERT INTO users(username, email, password, contact, department) VALUES('{$name}','{$email}','{$password}','{$contact}','{$department}'";
+  $query = "INSERT INTO users(username, email, password, contact, department) VALUES('{$username}','{$email}','{$password}','{$contact}','{$department}')";
   $addUser = mysqli_query($conn, $query);
 
   if (!$addUser) {
     echo "Something went wrong" . mysqli_error($conn);
   } else {
-    header('location: login.php');
+    echo "<script>window.location.href='login.php'</script>";
+    echo '<script type="text/javascript">
+       window.onload = function () { alert("Đăng kí thành công"); } 
+  </script>';
   }
-}
 }
 ?>
