@@ -38,10 +38,10 @@
 
         <?php
 
-        $sql = "select username from users and permission_desc from permissions
-        inner join users-permissions on ID = user_ID
-        inner join users-permissions on permission_ID = permission_ID
-        order by ID";
+        $sql = "SELECT users.username, permission.permission_desc, users-permissions.userID
+        FROM ((Orders
+        INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);";
 
         $result = mysqli_query($conn, $sql);
 
