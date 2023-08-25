@@ -15,11 +15,10 @@
           <a href="Validate function/login.php"> <input type="image" img src="Image/loginava.gif" alt="login image" width="53%" height="53%"></a>
           <p class="card-text text-muted">Đừng chia sẻ mật khẩu với bất kì ai</p>
           <a href="Validate function/login.php" class="btn btn-primary">
-            <i class="fa-solid fa-pencil fa-shake"></i> Đăng nhập </a>                                    
+            <i class="fa-solid fa-pencil fa-shake"></i> Đăng nhập </a>
         </div>
       </div>
     </div>
-
     <div class="col">
       <div class="card text-center">
         <div class="card-header">
