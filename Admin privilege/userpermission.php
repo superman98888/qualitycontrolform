@@ -39,9 +39,9 @@
         <?php
 
         $sql = "SELECT users.username, permission.permission_desc, users-permissions.userID
-        FROM ((Orders
-        INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
-        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);";
+        FROM users
+        INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID";
 
         $result = mysqli_query($conn, $sql);
 
