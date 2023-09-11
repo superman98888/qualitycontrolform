@@ -1,6 +1,6 @@
 <?php session_start();     ?>    
 <?php include "../header.php" ?>
-<?php $user_id = $_SESSION['id']; ?>
+<?php //$user_id = $_SESSION['id']; ?>
 <?php
 // if (isset($_POST['signout'])) {
 //   session_destroy();
@@ -38,10 +38,11 @@
 
         <?php
 
-        $sql = "SELECT users.username, permission.permission_desc, users-permissions.userID
+        $sql = "SELECT users.username, users.ID, permission.permission_desc
         FROM users
-        INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
-        INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID";
+        INNER JOIN users-permissions ON users.ID = users_ID
+        INNER JOIN permissions ON users-permissions.permission_ID = permissions.permission_ID
+        ORDER BY users.ID";
 
         $result = mysqli_query($conn, $sql);
 
