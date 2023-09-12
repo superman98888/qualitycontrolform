@@ -38,10 +38,10 @@
 
         <?php
 
-        $sql = "SELECT users.username, users.ID, permission.permission_desc
+        $sql = "SELECT users.username, permissions.permission_desc
         FROM users
-        INNER JOIN users-permissions ON users.ID = users_ID
-        INNER JOIN permissions ON users-permissions.permission_ID = permissions.permission_ID
+        INNER JOIN userpermi ON users.ID = users_ID
+        INNER JOIN permissions ON userpermi.permission_ID = permissions.permission_ID
         ORDER BY users.ID";
 
         $result = mysqli_query($conn, $sql);
